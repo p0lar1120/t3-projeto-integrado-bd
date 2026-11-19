@@ -2,3 +2,5 @@
 /.claude
 /.venv
 /dados
+__pycache__/
+*.pyc
