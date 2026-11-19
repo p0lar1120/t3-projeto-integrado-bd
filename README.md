@@ -23,6 +23,8 @@ sql/03_dimtempo.sql        tabela de granularidade temporal (mês, bimestre, tri
 sql/04_indices.sql         índices para os JOINs
 sql/05_view_pa_ijui.sql    VIEW sia.pa_ijui (Ijuí + tabelas descritivas)
 sql/06_validacao_consultas.sql   validação e consultas de demonstração
+gerar_graficos.py          gera as 9 figuras fora do notebook (aceita números: gerar_graficos.py 02 07)
+graficos/                  um módulo por figura (g01_... a g09_...) + comum.py (carga, limpeza, estilo)
 analise_siasus.ipynb       Aulas 2 e 3: exploração, limpeza, análises, gráficos e interpretação
 figuras/                   gráficos gerados pelo notebook
 ```
@@ -47,6 +49,7 @@ procedimento (`pa_proc_id`), CBO (`pa_cbocod`) e CID10 (`pa_cidpri`); município
    Validação esperada: `pars2607` = 4.532.294 linhas (o CSV tem 4.532.295 com o cabeçalho); `pa_ijui` = 68.827 linhas (iguais às de `pars2607` com `PA_UFMUN='431020'`).
 5. **Análises e gráficos:** `.venv/bin/jupyter nbconvert --to notebook --execute --inplace analise_siasus.ipynb`
    (ou abrir o notebook no Jupyter). Os gráficos são gravados em `figuras/`.
+   Os mesmos gráficos também podem ser gerados sem o notebook: `.venv/bin/python gerar_graficos.py`.
 
 ## Decisões e observações
 - A VIEW liga a dimensão tempo à **competência de atendimento** (`PA_CMP`): o mês de movimentação (`PA_MVM`) é único no arquivo.
