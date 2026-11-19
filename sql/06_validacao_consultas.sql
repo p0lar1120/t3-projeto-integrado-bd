@@ -1,10 +1,9 @@
--- Aula 1 - Passos 5 e 6: validação e consultas de demonstração.
 USE sia;
 
 -- Estrutura e contagem de registros
 SHOW TABLES;
 DESCRIBE pars2607;
-SELECT COUNT(*) AS registros_pars2607 FROM pars2607;                       -- 4.532.294 (= linhas do CSV)
+SELECT COUNT(*) AS registros_pars2607 FROM pars2607;                      
 SELECT COUNT(*) AS registros_ijui FROM pars2607 WHERE PA_UFMUN = '431020';
 SELECT 'cadgerrs' t, COUNT(*) n FROM cadgerrs UNION ALL SELECT 'cbo', COUNT(*) FROM cbo
 UNION ALL SELECT 'cid', COUNT(*) FROM cid UNION ALL SELECT 'procedimentos', COUNT(*) FROM procedimentos

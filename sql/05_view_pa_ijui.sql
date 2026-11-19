@@ -1,7 +1,3 @@
--- Estratégia A: VIEW restrita a Ijuí (pa_ufmun = '431020') com as tabelas descritivas.
--- A dimensão tempo é ligada à competência de atendimento (PA_CMP), pois o mês de
--- movimentação (PA_MVM) é único no arquivo (202607) e não permitiria ver a evolução.
--- As colunas após pa_valapr (códigos e AnoMes) foram acrescentadas para as análises.
 USE sia;
 CREATE OR REPLACE VIEW pa_ijui AS
 SELECT dt.ano AS Ano, dt.mes AS Mes, dt.anobi AS AnoBimestre, dt.anotri AS AnoTrimestre,
@@ -18,8 +14,6 @@ FROM pars2607 pa
 LEFT JOIN cadgerrs      ca      ON pa.PA_CODUNI  = ca.cnes
 LEFT JOIN procedimentos pro     ON pa.PA_PROC_ID = pro.ip_cod
 LEFT JOIN cbo           cb      ON pa.PA_CBOCOD  = cb.cbo
--- a tabela cid tem códigos repetidos em minúsculas (j450 = 'CID NÃO IDENTIFICADO');
--- como a collation ignora caixa, mantemos só os códigos em maiúsculas para não multiplicar linhas
 LEFT JOIN (SELECT cd_cod, cd_descr FROM cid WHERE BINARY cd_cod = BINARY UPPER(cd_cod)) cid
                                 ON pa.PA_CIDPRI  = cid.cd_cod
 LEFT JOIN tb_municip    mun_est ON pa.PA_UFMUN   = mun_est.co_municip

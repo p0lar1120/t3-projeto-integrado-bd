@@ -1,8 +1,3 @@
-"""Importa os .dbf auxiliares da pasta dados/ para o schema `sia` do MySQL.
-
-Uso:  .venv/bin/python importar_dbf.py
-(as tabelas são recriadas a cada execução)
-"""
 from pathlib import Path
 from dbfread import DBF
 from conexao import usar_conexao
